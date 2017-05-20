@@ -12,7 +12,9 @@ import CoreMotion
 class ViewController: UIViewController {
     
     var motionManager : CMMotionManager = CMMotionManager()
+    var asyncSocket : GCDAsyncSocket = GCDAsyncSocket()
 
+    
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var webView: UIWebView!
     
@@ -30,6 +32,21 @@ class ViewController: UIViewController {
         self.webView.loadRequest(requestObject)
         self.webView.scrollView.isScrollEnabled = false
         self.webView.scrollView.bounces = false
+        
+        self.initSocket()
+    }
+    
+    func initSocket() {
+        var socketDelegateQ : DispatchQueue
+        socketDelegateQ = DispatchQueue(label: "com.shayestehpour.socketDelegateQ")
+        
+        self.asyncSocket = GCDAsyncSocket(delegate: self, delegateQueue: socketDelegateQ)
+        
+        do {
+            try self.asyncSocket.connect(toHost: "172.20.10.6", onPort: 9001)
+        } catch {
+            print("error connecting to host")
+        }
     }
     
     func initMotionManager() {
@@ -39,6 +56,9 @@ class ViewController: UIViewController {
                 print(data?.gravity.x ?? "XXX", data?.gravity.y ?? "YYY", data?.gravity.z ?? "ZZZ")
                 
                 self.slider.setValue(Float((data?.gravity.y)! * (-100.0)), animated: true)
+                
+                let str = "*\((data?.gravity.y)! * (-100.0))*"
+                self.asyncSocket.write(str.data(using: .ascii), withTimeout: -1, tag: 0)
             })
         }
     }
