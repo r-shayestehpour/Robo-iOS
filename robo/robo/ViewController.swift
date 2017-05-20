@@ -57,7 +57,7 @@ class ViewController: UIViewController {
                 
                 self.slider.setValue(Float((data?.gravity.y)! * (-100.0)), animated: true)
                 
-                let str = "*\((data?.gravity.y)! * (-100.0))*"
+                let str = "*\(Int((data?.gravity.y)! * (-100.0)))*"
                 self.asyncSocket.write(str.data(using: .ascii), withTimeout: -1, tag: 0)
             })
         }
