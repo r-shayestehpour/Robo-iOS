@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +21,35 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nw0-Tz-tuB">
+                                <rect key="frame" x="0.0" y="20" width="667" height="355"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="P2S-ow-Yx8">
+                                <rect key="frame" x="18" y="325" width="631" height="31"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nw0-Tz-tuB" secondAttribute="bottom" id="BAi-ec-cle"/>
+                            <constraint firstItem="Nw0-Tz-tuB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DZh-Tv-fxz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P2S-ow-Yx8" secondAttribute="bottom" constant="20" id="OYm-zL-5uj"/>
+                            <constraint firstItem="P2S-ow-Yx8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Sre-sS-9mk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P2S-ow-Yx8" secondAttribute="trailing" id="a4Z-A2-UAX"/>
+                            <constraint firstAttribute="trailing" secondItem="Nw0-Tz-tuB" secondAttribute="trailing" id="fMF-QR-vkh"/>
+                            <constraint firstItem="Nw0-Tz-tuB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="orI-GW-BXu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="slider" destination="P2S-ow-Yx8" id="TxR-WH-bJc"/>
+                        <outlet property="webView" destination="Nw0-Tz-tuB" id="Bpi-vF-uDY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="33.733133433283363" y="24.800000000000001"/>
         </scene>
     </scenes>
 </document>
