@@ -55,12 +55,21 @@ class ViewController: UIViewController {
             self.motionManager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler: { data, error in
                 print(data?.gravity.x ?? "XXX", data?.gravity.y ?? "YYY", data?.gravity.z ?? "ZZZ")
                 
-                self.slider.setValue(Float((data?.gravity.y)! * (-100.0)), animated: true)
+                self.slider.setValue(self.gravityY(y: (data?.gravity.y)!), animated: true)
                 
-                let str = "*\(Int((data?.gravity.y)! * (-100.0)))*"
+                let str = "*\(Int(self.gravityY(y: (data?.gravity.y)!)))*"
                 self.asyncSocket.write(str.data(using: .ascii), withTimeout: -1, tag: 0)
             })
         }
+    }
+    
+    func gravityY(y : Double) -> Float {
+        if y > 0.5 {
+            return -100.0
+        } else if y < -0.5 {
+            return 100.0
+        }
+        return Float(y * (-200.0))
     }
 
     override func didReceiveMemoryWarning() {
