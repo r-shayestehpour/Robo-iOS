@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         
         self.initMotionManager()
         
-        let url = URL(string: "https://www.google.com")
+        let url = URL(string: "http://172.20.10.6:8080/?action=stream")
         let requestObject = URLRequest(url: url!)
         self.webView.loadRequest(requestObject)
         self.webView.scrollView.isScrollEnabled = false

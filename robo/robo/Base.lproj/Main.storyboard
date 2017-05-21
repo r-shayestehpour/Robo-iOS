@@ -42,6 +42,8 @@
                             <constraint firstItem="Nw0-Tz-tuB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="orI-GW-BXu"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="667" height="375"/>
                     <connections>
                         <outlet property="slider" destination="P2S-ow-Yx8" id="TxR-WH-bJc"/>
                         <outlet property="webView" destination="Nw0-Tz-tuB" id="Bpi-vF-uDY"/>
